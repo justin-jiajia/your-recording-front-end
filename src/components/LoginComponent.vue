@@ -44,7 +44,7 @@ export default {
         })
         .then(function (response) {
           Store.token = response.data.token;
-          Store.login = true;
+          localStorage.setItem('token', response.data.token);
           Router.push("/");
         })
         .catch(function (error) {

@@ -16,7 +16,7 @@
 <script>
 import { axios } from "../App.vue";
 import Store from "../store/index";
-import { useRouter } from 'vue-router';
+import Router from '../router/index.js'
 import { ElMessage } from 'element-plus';
 import { reactive } from "vue";
 var l = reactive({ l: false });
@@ -44,8 +44,8 @@ export default {
         })
         .then(function (response) {
           Store.token = response.data.token;
-          Store.login = true;
-          useRouter().push("/");
+          localStorage.setItem('token', response.data.token);
+          Router.push("/");
         })
         .catch(function (error) {
           l.l = false;
